@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>maquina de escrever</title>
+
+  <style>
+    body {
+      background: #0e1013;
+    }
+
+    h1 {
+      max-width: 680px;
+      text-align: center;
+      margin: 60px auto;
+      font-family: 'Courier New', Courier, monospace;
+      color: #fff;
+    }
+
+    h1::after {
+      content: '|';
+      margin-left: 5px;
+      opacity: 1;
+      animation: piscar .7s infinite;
+    }
+
+    @keyframes piscar {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, quia?</h1>
+
+  <script>
+    function typeWrite(elemento) {
+      const textoArray = elemento.innerHTML.split('');
+      elemento.innerHTML = '';
+      textoArray.forEach((letra, index) => {
+        setTimeout(function () {
+          elemento.innerHTML += letra;
+        }, 75 * index)
+      });
+    }
+
+    const titulo = document.querySelector('h1')
+    typeWrite(titulo)
+  </script>
+</body>
+
+</html>

@@ -24,8 +24,36 @@
       content: '|';
       margin-left: 5px;
       opacity: 1;
-      animation: piscar .7s infinite;
+      animation: piscar 1s infinite;
     }
+	
+	.container {
+	  display: flex;
+	  align-itens: center;
+	  justify-content: center;
+	  flex-direction: column;
+	}
+	
+	button {
+	  max-width: 100px;
+		height: 36px;
+		font-size: 1rem;
+		font-weight: bold;
+		color: #ffffff;
+		background: transparent;
+		border: none;
+		outline: none;
+		cursor: pointer;
+		margin: 0 auto;
+		letter-spacing: 2px;
+		transition: 0.7s;
+		border-radius: 5px;
+	}
+	
+	button:hover {
+	  color: #000;
+	  background: #fff; 
+	}
 
     @keyframes piscar {
 
@@ -42,21 +70,35 @@
 </head>
 
 <body>
-  <h1>Texto digitado para aparecer na animação!</h1>
+  <div class="container">
+    <h1>Texto digitado para aparecer na animação!</h1>
+	<button onclick=typeWrite(document.querySelector('h1'))>Digitar</button>
+  </div>
 
   <script>
     function typeWrite(elemento) {
-      const textoArray = elemento.innerHTML.split('');
-      elemento.innerHTML = '';
-      textoArray.forEach((letra, index) => {
+      const texto = prompt('Informe o texto a ser digitado');
+	  if(texto) {
+	    const textoArray = texto.split('');
+        elemento.innerHTML = '';
+        textoArray.forEach((letra, index) => {
         setTimeout(function () {
           elemento.innerHTML += letra;
         }, 75 * index)
-      });
+       }); 
+	  } else {
+	  	const textoArray = elemento.innerHTML.split('');
+        elemento.innerHTML = '';
+        textoArray.forEach((letra, index) => {
+        setTimeout(function () {
+          elemento.innerHTML += letra;
+        }, 75 * index)
+       }); 
+	  }
     }
 
-    const titulo = document.querySelector('h1')
-    typeWrite(titulo)
+    const titulo = document.querySelector('h1');
+    typeWrite(titulo);
   </script>
 </body>
 
